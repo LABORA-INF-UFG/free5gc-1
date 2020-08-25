@@ -34,9 +34,9 @@ jobs:
           
       - name: Packages Control Plane
         run: |
-          apt -y update
-          apt -y install mongodb wget git
-          systemctl start mongodb
+          sudo apt -y update
+          sudo apt -y install mongodb wget git
+          sudo systemctl start mongodb
           
       - name: Packages User Plane
         run: | 
