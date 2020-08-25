@@ -66,7 +66,7 @@ jobs:
           lsmod | grep gtp
               
       - name: Build NFs
-        run: ./build.sh
+        run: sudo ./build.sh
       
       - name: Test 5GS Procedures
         run: |
