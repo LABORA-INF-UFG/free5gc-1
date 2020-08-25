@@ -34,6 +34,7 @@ jobs:
           echo "GOPATH: $GOPATH"
           echo "Listing dirs"
           ls -la
+          sudo ln -s $GOROOT /usr/local/go
           
       - name: Install Go Deps
         run: | 
