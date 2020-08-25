@@ -56,10 +56,7 @@ jobs:
           
       - name: GTP5G module
         run: | 
-          echo "PWD: $(pwd)"
-          ls -l
           git clone -b v0.1.0 https://github.com/PrinzOwO/gtp5g.git ./src/upf/build/
-          ls -l
           cd ./src/upf/build/gtp5g
           ls -l
           make
