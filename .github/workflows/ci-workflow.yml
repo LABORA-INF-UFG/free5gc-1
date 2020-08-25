@@ -8,12 +8,30 @@ on:
 
 jobs:
   test:
-    name: building and test
+    name: build and test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+      - uses: actions/setup-go@v2
+        with:
+          go-version: '^1.14.4' # The Go version to download (if necessary) and use.
+      
       - name: List files Permissions
         run: ls -l
+        
+      - name: Check GO
+        run: go version
+      
+      - name: Install Deps and Libs
+        run: pwd
+      
+      - name: Build NFs
+        run: pwd
+      
+      - name: Unity Tests
+        run: pwd
+      
       - name: Test 5GS Procedures
         run: |
+          chmod +x test.sh
           ./test.sh TestNon3GPP                
