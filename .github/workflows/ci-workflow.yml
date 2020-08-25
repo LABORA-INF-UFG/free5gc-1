@@ -12,32 +12,43 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: textbook/git-checkout-submodule-action@2.1.1
+      - name: Checkout Repo and Submodules
+      
       - uses: actions/setup-go@v2
         with:
-          go-version: '^1.14.4' # The Go version to download (if necessary) and use.
-      
-      - name: Get Submodules
-        run: ls -l src/
-      
-      - name: Checkout submodules
-        # You may pin to the exact commit or the version.
-        # uses: textbook/git-checkout-submodule-action@0cb23c7e6a67085e1dc5e884920bd620f7b9c469
-        uses: textbook/git-checkout-submodule-action@2.1.1
-      
-      - name: List files Permissions
-        run: ls -l
+          go-version: '^1.14.4'
+      - name: Setup Go
         
       - name: Check GO
-        run: go version
+        run: |
+          go version
+          git --version
+          ls -la src/amf/
+          
+      - name: Packages Control Plane
+        run: |
+          apt -y update
+          apt -y install mongodb wget git
+          systemctl start mongodb
+          
+      - name: Packages User Plane
+        run: | 
+          apt -y update
+          apt -y install git gcc cmake autoconf libtool pkg-config libmnl-dev libyaml-dev
+          go get -u github.com/sirupsen/logrus
+          git clone -b v0.1.0 https://github.com/PrinzOwO/gtp5g.git ./src/upf/build/
+          cd gtp5g
+          make
+          make install
       
-      - name: Install Deps and Libs
-        run: pwd
-      
+      - name: Install Deps
+        run: | 
+          go mod download
+          
+              
       - name: Build NFs
-        run: pwd
-      
-      - name: Unity Tests
-        run: pwd
+        run: ./build.sh
       
       - name: Test 5GS Procedures
         run: |
