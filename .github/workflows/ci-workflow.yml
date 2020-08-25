@@ -37,18 +37,17 @@ jobs:
       - name: Packages Control Plane
         run: |
           sudo apt -y -q update
-          sudo apt -y -q install mongodb wget git
-          sudo systemctl start mongodb
+          sudo apt -y -q install wget
           
       - name: Packages User Plane
         run: | 
-          apt -y update
-          apt -y install git gcc cmake autoconf libtool pkg-config libmnl-dev libyaml-dev
+          sudo apt -y update
+          sudo apt -y install git gcc cmake autoconf libtool pkg-config libmnl-dev libyaml-dev
           go get -u github.com/sirupsen/logrus
           git clone -b v0.1.0 https://github.com/PrinzOwO/gtp5g.git ./src/upf/build/
           cd gtp5g
           make
-          make install    
+          sudo make install    
               
       - name: Build NFs
         run: ./build.sh
