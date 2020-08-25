@@ -26,8 +26,9 @@ jobs:
         run: |
           go version
           git --version
-          echo $GOROOT
-          echo $GOPATH
+          echo "pwd: $(pwd)"
+          echo "GOROOT: $GOROOT"
+          echo "GOPATH: $GOPATH"
           
       - name: Install GO Deps
         run: | 
