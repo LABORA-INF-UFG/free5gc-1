@@ -274,4 +274,4 @@ i. TestULCL
 **For more details, you can reference to our [wiki](https://github.com/free5gc/free5gc/wiki)**
 
 ## Release Note
-Detailed changes for each release are documented in the [release notes](https://github.com/free5gc/free5gc/releases).
+Detailed changes for each release are documented in the [release notes](https://github.com/free5gc/free5gc/releases)!
