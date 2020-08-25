@@ -36,10 +36,16 @@ jobs:
         run: | 
           go mod download
           
+      - name: mongo-action
+        uses: DigiPie/mongo-action@v1.0.0
+        with:
+          image_version: latest
+          port: 27017
+          
       - name: Packages Control Plane
         run: |
           sudo apt -y -q update
-          sudo apt -y -q install wget mongodb
+          sudo apt -y -q install wget
           
       - name: Packages User Plane
         run: | 
