@@ -29,6 +29,8 @@ jobs:
           echo "pwd: $(pwd)"
           echo "GOROOT: $GOROOT"
           echo "GOPATH: $GOPATH"
+          echo "Listing dirs"
+          ls -la
           
       - name: Install GO Deps
         run: | 
@@ -37,13 +39,16 @@ jobs:
       - name: Packages Control Plane
         run: |
           sudo apt -y -q update
-          sudo apt -y -q install wget
+          sudo apt -y -q install wget mongodb
           
       - name: Packages User Plane
         run: | 
           sudo apt -y update
           sudo apt -y install git gcc cmake autoconf libtool pkg-config libmnl-dev libyaml-dev
           go get -u github.com/sirupsen/logrus
+          
+      - name: GTP5G module
+        run: | 
           git clone -b v0.1.0 https://github.com/PrinzOwO/gtp5g.git ./src/upf/build/
           cd gtp5g
           make
