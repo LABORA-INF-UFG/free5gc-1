@@ -11,20 +11,26 @@ jobs:
     name: build and test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: textbook/git-checkout-submodule-action@2.1.1
-      - name: Checkout Repo and Submodules
+      - name: Checkout Repo
+        uses: actions/checkout@v2
       
-      - uses: actions/setup-go@v2
+      - name: Checkout Submodules
+        uses: textbook/git-checkout-submodule-action@2.1.1
+      
+      - name: Setup Go
+        uses: actions/setup-go@v2
         with:
           go-version: '^1.14.4'
-      - name: Setup Go
         
       - name: Check GO
         run: |
           go version
           git --version
           ls -la src/amf/
+          
+      - name: Install GO Deps
+        run: | 
+          go mod download
           
       - name: Packages Control Plane
         run: |
@@ -40,12 +46,7 @@ jobs:
           git clone -b v0.1.0 https://github.com/PrinzOwO/gtp5g.git ./src/upf/build/
           cd gtp5g
           make
-          make install
-      
-      - name: Install Deps
-        run: | 
-          go mod download
-          
+          make install    
               
       - name: Build NFs
         run: ./build.sh
@@ -53,4 +54,11 @@ jobs:
       - name: Test 5GS Procedures
         run: |
           chmod +x test.sh
+          ./test.sh TestRegistration
+          ./test.sh TestServiceRequest
+          ./test.sh TestXnHandover
+          ./test.sh TestDeregistration
+          ./test.sh TestPDUSessionReleaseRequest
+          ./test.sh TestPaging
+          ./test.sh TestN2Handover
           ./test.sh TestNon3GPP                
