@@ -68,15 +68,29 @@ jobs:
               
       - name: Build NFs
         run: sudo ./build.sh
-      
-      - name: Test 5GS Procedures
+          
+      - name: TestRegistration
         run: |
           chmod +x test.sh
           ./test.sh TestRegistration
-          ./test.sh TestServiceRequest
-          ./test.sh TestXnHandover
-          ./test.sh TestDeregistration
-          ./test.sh TestPDUSessionReleaseRequest
-          ./test.sh TestPaging
-          ./test.sh TestN2Handover
-          ./test.sh TestNon3GPP                
+        
+      - name: TestServiceRequest
+        run: ./test.sh TestRegistration
+      
+      - name: TestXnHandover
+        run: ./test.sh TestXnHandover
+         
+      - name: TestDeregistration
+        run: ./test.sh TestDeregistration
+         
+      - name: TestPDUSessionReleaseRequest
+        run: ./test.sh TestPDUSessionReleaseRequest
+         
+      - name: TestPaging
+        run: ./test.sh TestPaging
+         
+      - name: TestN2Handover
+        run: ./test.sh TestN2Handover
+       
+      - name: TestNon3GPP
+        run: ./test.sh TestNon3GPP
