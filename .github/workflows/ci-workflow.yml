@@ -26,7 +26,8 @@ jobs:
         run: |
           go version
           git --version
-          ls -la src/amf/
+          echo $GOROOT
+          echo $GOPATH
           
       - name: Install GO Deps
         run: | 
@@ -34,8 +35,8 @@ jobs:
           
       - name: Packages Control Plane
         run: |
-          sudo apt -y update
-          sudo apt -y install mongodb wget git
+          sudo apt -y -q update
+          sudo apt -y -q install mongodb wget git
           sudo systemctl start mongodb
           
       - name: Packages User Plane
