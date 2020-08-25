@@ -22,10 +22,11 @@ jobs:
         with:
           go-version: '^1.14.4'
         
-      - name: Check GO
+      - name: Check Versions
         run: |
           go version
           git --version
+          docker --version
           echo "pwd: $(pwd)"
           echo "GOROOT: $GOROOT"
           echo "GOPATH: $GOPATH"
@@ -59,7 +60,7 @@ jobs:
           ls -l
           git clone -b v0.1.0 https://github.com/PrinzOwO/gtp5g.git ./src/upf/build/
           ls -l
-          cd gtp5g
+          cd ./src/upf/build/gtp5g
           ls -l
           make
           sudo make install    
