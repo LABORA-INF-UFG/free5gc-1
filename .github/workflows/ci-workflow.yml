@@ -32,11 +32,11 @@ jobs:
           echo "Listing dirs"
           ls -la
           
-      - name: Install GO Deps
+      - name: Install Go Deps
         run: | 
           go mod download
           
-      - name: mongo-action
+      - name: MongoDB
         uses: DigiPie/mongo-action@v1.0.0
         with:
           image_version: latest
@@ -45,7 +45,7 @@ jobs:
       - name: Packages Control Plane
         run: |
           sudo apt -y -q update
-          sudo apt -y -q install wget
+          sudo apt -y -q install wget git
           
       - name: Packages User Plane
         run: | 
@@ -55,8 +55,12 @@ jobs:
           
       - name: GTP5G module
         run: | 
+          echo "PWD: $(pwd)"
+          ls -l
           git clone -b v0.1.0 https://github.com/PrinzOwO/gtp5g.git ./src/upf/build/
+          ls -l
           cd gtp5g
+          ls -l
           make
           sudo make install    
               
