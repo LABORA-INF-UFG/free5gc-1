@@ -20,7 +20,7 @@ jobs:
       - name: Setup Go
         uses: actions/setup-go@v2
         with:
-          go-version: '^1.14.4'
+          go-version: 1.14.7
         
       - name: Check Versions
         run: |
@@ -34,6 +34,7 @@ jobs:
           echo "GOPATH: $GOPATH"
           echo "Listing dirs"
           ls -la
+          sudo ln -s $GOROOT /usr/local/go
           
       - name: Install Go Deps
         run: | 
@@ -67,15 +68,29 @@ jobs:
               
       - name: Build NFs
         run: sudo ./build.sh
-      
-      - name: Test 5GS Procedures
+          
+      - name: TestRegistration
         run: |
           chmod +x test.sh
           ./test.sh TestRegistration
-          ./test.sh TestServiceRequest
-          ./test.sh TestXnHandover
-          ./test.sh TestDeregistration
-          ./test.sh TestPDUSessionReleaseRequest
-          ./test.sh TestPaging
-          ./test.sh TestN2Handover
-          ./test.sh TestNon3GPP                
+        
+      - name: TestServiceRequest
+        run: ./test.sh TestRegistration
+      
+      - name: TestXnHandover
+        run: ./test.sh TestXnHandover
+         
+      - name: TestDeregistration
+        run: ./test.sh TestDeregistration
+         
+      - name: TestPDUSessionReleaseRequest
+        run: ./test.sh TestPDUSessionReleaseRequest
+         
+      - name: TestPaging
+        run: ./test.sh TestPaging
+         
+      - name: TestN2Handover
+        run: ./test.sh TestN2Handover
+       
+      - name: TestNon3GPP
+        run: ./test.sh TestNon3GPP
