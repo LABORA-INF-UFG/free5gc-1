@@ -11,7 +11,7 @@ jobs:
     name: code quality analysis
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repo
+      - name: Checkout Repositório
         uses: actions/checkout@v2
       
       - name: Checkout Submodules
