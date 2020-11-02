@@ -36,10 +36,11 @@ then
     exit 1
 fi
 
+mongo free5gc --eval "db.dropDatabase()"
 cp config/test/smfcfg.single.test.conf config/test/smfcfg.test.conf
 
 GOPATH=$HOME/go
-if [ $OS == "Ubuntu" ]; then
+if [[ $OS == 'Ubuntu' ]] || [[ $OS == 'Linux Mint' ]]; then
     GOROOT=/usr/local/go
 elif [ $OS == "Fedora" ]; then
     GOROOT=/usr/lib/golang
