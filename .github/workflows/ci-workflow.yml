@@ -68,7 +68,7 @@ jobs:
           lsmod | grep gtp
 
       - name: Build NFs
-        run: sudo make -f Makefile-CI all
+        run: make -f Makefile-CI all
           
       - name: TestRegistration
         run: |
