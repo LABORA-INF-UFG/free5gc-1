@@ -24,6 +24,7 @@ jobs:
         
       - name: Check Versions
         run: |
+          git describe --tags
           lsb_release -a
           uname -a
           go version
@@ -70,7 +71,7 @@ jobs:
           pwd
               
       - name: Build NFs
-        run: git describe --tags && pwd && sudo make all
+        run: pwd && sudo make all
           
       - name: TestRegistration
         run: |
