@@ -57,7 +57,6 @@ jobs:
           sudo apt -y install git gcc cmake autoconf libtool pkg-config libmnl-dev libyaml-dev
           go get -u github.com/sirupsen/logrus
           gcc --version
-          pwd
 
       - name: GTP5G module
         run: | 
@@ -67,51 +66,48 @@ jobs:
           make
           sudo make install    
           lsmod | grep gtp
-          pwd
-              
+
       - name: Build NFs
-        run: |
-          echo "VERSION=$GITHUB_SHA_SHORT"
-          sudo make -f Makefile-CI all
+        run: sudo make -f Makefile-CI all
           
       - name: TestRegistration
         run: |
           chmod +x test.sh
           sudo ./test.sh TestRegistration
-        timeout-minutes: 2
+        timeout-minutes: 3
       
       - name: TestGUTIRegistration
         run: sleep 5 && sudo ./test.sh TestGUTIRegistration
-        timeout-minutes: 2
+        timeout-minutes: 3
         
       - name: TestServiceRequest
         run: sleep 5 && sudo ./test.sh TestRegistration
-        timeout-minutes: 2
+        timeout-minutes: 3
       
       - name: TestXnHandover
         run: sleep 5 && sudo ./test.sh TestXnHandover
-        timeout-minutes: 2
+        timeout-minutes: 3
       
       - name: TestN2Handover
         run: sleep 5 && sudo ./test.sh TestN2Handover
-        timeout-minutes: 2
+        timeout-minutes: 3
          
       - name: TestDeregistration
         run: sleep 5 && sudo ./test.sh TestDeregistration
-        timeout-minutes: 2
+        timeout-minutes: 3
          
       - name: TestPDUSessionReleaseRequest
         run: sleep 5 && sudo ./test.sh TestPDUSessionReleaseRequest
-        timeout-minutes: 2
+        timeout-minutes: 3
          
       - name: TestPaging
         run: sleep 5 && sudo ./test.sh TestPaging
-        timeout-minutes: 2
+        timeout-minutes: 3
        
       - name: TestNon3GPP
         run: sleep 5 && sudo ./test.sh TestNon3GPP
-        timeout-minutes: 2
+        timeout-minutes: 3
 
       - name: TestReSynchronisation
         run: sleep 5 && sudo ./test.sh TestReSynchronisation
-        timeout-minutes: 2
+        timeout-minutes: 3
