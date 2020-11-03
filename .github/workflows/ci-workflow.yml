@@ -8,6 +8,9 @@ on:
 
 jobs:
   test:
+    env:
+      TIMEOUT_MIN: 3
+      WAIT_SEC: 7
     name: build and test
     runs-on: ubuntu-latest
     steps:
@@ -74,40 +77,40 @@ jobs:
         run: |
           chmod +x test.sh
           sudo ./test.sh TestRegistration
-        timeout-minutes: 3
+        timeout-minutes: $TIMEOUT_MIN
       
       - name: TestGUTIRegistration
-        run: sleep 5 && sudo ./test.sh TestGUTIRegistration
-        timeout-minutes: 3
+        run: sleep $WAIT_SEC && sudo ./test.sh TestGUTIRegistration
+        timeout-minutes: $TIMEOUT_MIN
         
       - name: TestServiceRequest
-        run: sleep 5 && sudo ./test.sh TestRegistration
-        timeout-minutes: 3
+        run: sleep $WAIT_SEC && sudo ./test.sh TestRegistration
+        timeout-minutes: $TIMEOUT_MIN
       
       - name: TestXnHandover
-        run: sleep 5 && sudo ./test.sh TestXnHandover
-        timeout-minutes: 3
+        run: sleep $WAIT_SEC && sudo ./test.sh TestXnHandover
+        timeout-minutes: $TIMEOUT_MIN
       
       - name: TestN2Handover
-        run: sleep 5 && sudo ./test.sh TestN2Handover
-        timeout-minutes: 3
+        run: sleep $WAIT_SEC && sudo ./test.sh TestN2Handover
+        timeout-minutes: $TIMEOUT_MIN
          
       - name: TestDeregistration
-        run: sleep 5 && sudo ./test.sh TestDeregistration
-        timeout-minutes: 3
+        run: sleep $WAIT_SEC && sudo ./test.sh TestDeregistration
+        timeout-minutes: $TIMEOUT_MIN
          
       - name: TestPDUSessionReleaseRequest
-        run: sleep 5 && sudo ./test.sh TestPDUSessionReleaseRequest
-        timeout-minutes: 3
+        run: sleep $WAIT_SEC && sudo ./test.sh TestPDUSessionReleaseRequest
+        timeout-minutes: $TIMEOUT_MIN
          
       - name: TestPaging
-        run: sleep 5 && sudo ./test.sh TestPaging
-        timeout-minutes: 3
+        run: sleep $WAIT_SEC && sudo ./test.sh TestPaging
+        timeout-minutes: $TIMEOUT_MIN
        
       - name: TestNon3GPP
-        run: sleep 5 && sudo ./test.sh TestNon3GPP
-        timeout-minutes: 3
+        run: sleep $WAIT_SEC && sudo ./test.sh TestNon3GPP
+        timeout-minutes: $TIMEOUT_MIN
 
       - name: TestReSynchronisation
-        run: sleep 5 && sudo ./test.sh TestReSynchronisation
-        timeout-minutes: 3
+        run: sleep $WAIT_SEC && sudo ./test.sh TestReSynchronisation
+        timeout-minutes: $TIMEOUT_MIN
