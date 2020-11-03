@@ -60,8 +60,8 @@ jobs:
       - name: GTP5G module
         run: | 
           uname -r
-          git clone -b v0.2.0 https://github.com/PrinzOwO/gtp5g.git ./src/upf/build/
-          cd src/upf/build
+          git clone -b v0.2.0 https://github.com/PrinzOwO/gtp5g.git
+          cd gtp5g
           make
           sudo make install    
           lsmod | grep gtp
