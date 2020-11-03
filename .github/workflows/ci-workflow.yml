@@ -58,7 +58,7 @@ jobs:
           go get -u github.com/sirupsen/logrus
           gcc --version
           pwd
-          
+
       - name: GTP5G module
         run: | 
           uname -r
@@ -70,7 +70,7 @@ jobs:
           pwd
               
       - name: Build NFs
-        run: pwd && sudo make all
+        run: git describe --tags && pwd && sudo make all
           
       - name: TestRegistration
         run: |
