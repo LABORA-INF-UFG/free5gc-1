@@ -77,40 +77,40 @@ jobs:
         run: |
           chmod +x test.sh
           sudo ./test.sh TestRegistration
-        timeout-minutes: $TIMEOUT_MIN
+        timeout-minutes: 3
       
       - name: TestGUTIRegistration
         run: sleep $WAIT_SEC && sudo ./test.sh TestGUTIRegistration
-        timeout-minutes: $TIMEOUT_MIN
+        timeout-minutes: 3
         
       - name: TestServiceRequest
         run: sleep $WAIT_SEC && sudo ./test.sh TestRegistration
-        timeout-minutes: $TIMEOUT_MIN
+        timeout-minutes: 3
       
       - name: TestXnHandover
         run: sleep $WAIT_SEC && sudo ./test.sh TestXnHandover
-        timeout-minutes: $TIMEOUT_MIN
+        timeout-minutes: 3
       
       - name: TestN2Handover
         run: sleep $WAIT_SEC && sudo ./test.sh TestN2Handover
-        timeout-minutes: $TIMEOUT_MIN
+        timeout-minutes: 3
          
       - name: TestDeregistration
         run: sleep $WAIT_SEC && sudo ./test.sh TestDeregistration
-        timeout-minutes: $TIMEOUT_MIN
+        timeout-minutes: 3
          
       - name: TestPDUSessionReleaseRequest
         run: sleep $WAIT_SEC && sudo ./test.sh TestPDUSessionReleaseRequest
-        timeout-minutes: $TIMEOUT_MIN
+        timeout-minutes: 3
          
       - name: TestPaging
         run: sleep $WAIT_SEC && sudo ./test.sh TestPaging
-        timeout-minutes: $TIMEOUT_MIN
+        timeout-minutes: 3
        
       - name: TestNon3GPP
         run: sleep $WAIT_SEC && sudo ./test.sh TestNon3GPP
-        timeout-minutes: $TIMEOUT_MIN
+        timeout-minutes: 3
 
       - name: TestReSynchronisation
         run: sleep $WAIT_SEC && sudo ./test.sh TestReSynchronisation
-        timeout-minutes: $TIMEOUT_MIN
+        timeout-minutes: 3
