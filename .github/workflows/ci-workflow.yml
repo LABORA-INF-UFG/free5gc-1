@@ -73,30 +73,40 @@ jobs:
         run: |
           chmod +x test.sh
           sudo ./test.sh TestRegistration
+        timeout-minutes: 2
       
       - name: TestGUTIRegistration
         run: sudo ./test.sh TestGUTIRegistration
+        timeout-minutes: 2
         
       - name: TestServiceRequest
         run: sudo ./test.sh TestRegistration
+        timeout-minutes: 2
       
       - name: TestXnHandover
         run: sudo ./test.sh TestXnHandover
+        timeout-minutes: 2
       
       - name: TestN2Handover
         run: sudo ./test.sh TestN2Handover
+        timeout-minutes: 2
          
       - name: TestDeregistration
         run: sudo ./test.sh TestDeregistration
+        timeout-minutes: 2
          
       - name: TestPDUSessionReleaseRequest
         run: sudo ./test.sh TestPDUSessionReleaseRequest
+        timeout-minutes: 2
          
       - name: TestPaging
         run: sudo ./test.sh TestPaging
+        timeout-minutes: 2
        
       - name: TestNon3GPP
         run: sudo ./test.sh TestNon3GPP
+        timeout-minutes: 2
 
       - name: TestReSynchronisation
         run: sudo ./test.sh TestReSynchronisation
+        timeout-minutes: 2
