@@ -37,8 +37,7 @@ jobs:
           sudo ln -s $GOROOT /usr/local/go
           
       - name: Install Go Deps
-        run: | 
-          go mod download
+        run: go mod download
           
       - name: MongoDB
         uses: DigiPie/mongo-action@v1.0.0
@@ -68,7 +67,7 @@ jobs:
           lsmod | grep gtp
 
       - name: Build NFs
-        run: make -f Makefile-CI all
+        run: sudo make -f Makefile-CI all
           
       - name: TestRegistration
         run: |
