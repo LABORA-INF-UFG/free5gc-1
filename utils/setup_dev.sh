@@ -5,7 +5,7 @@ if [[ $# -ne 1 ]] || ([[ $1 != "up" ]] && [[ $1 != "down" ]]); then
   exit 1
 fi
 
-MY5GCORE_DIR="$(pwd)/../"
+FREE5GC_DIR="$(pwd)/../"
 
 # TODO: Read IPs from config files
 HOSTNAMES=(
@@ -49,35 +49,35 @@ if [[ $1 == "up" ]]; then
   # dependencies required
   sudo apt-get install linux-headers-$(uname -r)
 
-#   clone gtp5g repo if it does not exists
-#  echo "Checking if gtp5g is installed..."
-#  if [[ ! -d "$FREE5GC_DIR/src/upf/build/gtp5g" ]]; then
-#    echo "gtp5g not installed"
-#    GTP5G_REPO_OWNER="jplobianco" #bjoern-r"
-#
-#    if [[ $KERNEL_VERSION -ge 5 ]] ; then
-#      GTP5G_REPO_OWNER="PrinzOwO"
-#    fi
-#
-#    echo "Cloning gtp5g repo"
-#    git clone https://github.com/$GTP5G_REPO_OWNER/gtp5g.git "$FREE5GC_DIR/src/upf/build/gtp5g"
-#  else
-#    echo "gtp5g is already installed"
-#  fi
+  # clone gtp5g repo if it does not exists
+  echo "Checking if gtp5g is installed..."
+  if [[ ! -d "$FREE5GC_DIR/src/upf/build/gtp5g" ]]; then
+    echo "gtp5g not installed"
+    GTP5G_REPO_OWNER="jplobianco" #bjoern-r"
 
-#  echo "Checking if gtp5g module is loaded in kernel..."
-#  lsmod | grep gtp5g >/dev/null
-#  if [ $? == 1 ]; then
-#    # Load gtp5g modules on the kernel
-#    echo "gt5g kernel module not loaded"
-#    echo "Loading gtp5g module into the kernel..."
-#    cd "$FREE5GC_DIR/src/upf/build/gtp5g"
-#    make
-#    sudo make install
-#    echo "gtp5g kernel module loaded"
-#  else
-#    echo "gtp5g kernel module is already loaded"
-#  fi
+    if [[ $KERNEL_VERSION -ge 5 ]] ; then
+      GTP5G_REPO_OWNER="PrinzOwO"
+    fi
+
+    echo "Cloning gtp5g repo"
+    git clone https://github.com/$GTP5G_REPO_OWNER/gtp5g.git "$FREE5GC_DIR/src/upf/build/gtp5g"
+  else
+    echo "gtp5g is already installed"
+  fi
+
+  echo "Checking if gtp5g module is loaded in kernel..."
+  lsmod | grep gtp5g >/dev/null
+  if [ $? == 1 ]; then
+    # Load gtp5g modules on the kernel
+    echo "gt5g kernel module not loaded"
+    echo "Loading gtp5g module into the kernel..."
+    cd "$FREE5GC_DIR/src/upf/build/gtp5g"
+    make
+    sudo make install
+    echo "gtp5g kernel module loaded"
+  else
+    echo "gtp5g kernel module is already loaded"
+  fi
 
   ######################################################
   # SETTING UP NETWORK INTERFACES AND NAMESPACES
