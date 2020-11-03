@@ -8,9 +8,6 @@ on:
 
 jobs:
   test:
-    env:
-      TIMEOUT_MIN: 3
-      WAIT_SEC: 7
     name: build and test
     runs-on: ubuntu-latest
     steps:
@@ -80,37 +77,37 @@ jobs:
         timeout-minutes: 3
       
       - name: TestGUTIRegistration
-        run: sleep $WAIT_SEC && sudo ./test.sh TestGUTIRegistration
+        run: sleep 7 && sudo ./test.sh TestGUTIRegistration
         timeout-minutes: 3
         
       - name: TestServiceRequest
-        run: sleep $WAIT_SEC && sudo ./test.sh TestRegistration
+        run: sleep 7 && sudo ./test.sh TestRegistration
         timeout-minutes: 3
       
       - name: TestXnHandover
-        run: sleep $WAIT_SEC && sudo ./test.sh TestXnHandover
+        run: sleep 7 && sudo ./test.sh TestXnHandover
         timeout-minutes: 3
       
       - name: TestN2Handover
-        run: sleep $WAIT_SEC && sudo ./test.sh TestN2Handover
+        run: sleep 7 && sudo ./test.sh TestN2Handover
         timeout-minutes: 3
          
       - name: TestDeregistration
-        run: sleep $WAIT_SEC && sudo ./test.sh TestDeregistration
+        run: sleep 7 && sudo ./test.sh TestDeregistration
         timeout-minutes: 3
          
       - name: TestPDUSessionReleaseRequest
-        run: sleep $WAIT_SEC && sudo ./test.sh TestPDUSessionReleaseRequest
+        run: sleep 7 && sudo ./test.sh TestPDUSessionReleaseRequest
         timeout-minutes: 3
          
       - name: TestPaging
-        run: sleep $WAIT_SEC && sudo ./test.sh TestPaging
+        run: sleep 7 && sudo ./test.sh TestPaging
         timeout-minutes: 3
        
       - name: TestNon3GPP
-        run: sleep $WAIT_SEC && sudo ./test.sh TestNon3GPP
+        run: sleep 7 && sudo ./test.sh TestNon3GPP
         timeout-minutes: 3
 
       - name: TestReSynchronisation
-        run: sleep $WAIT_SEC && sudo ./test.sh TestReSynchronisation
+        run: sleep 7 && sudo ./test.sh TestReSynchronisation
         timeout-minutes: 3
