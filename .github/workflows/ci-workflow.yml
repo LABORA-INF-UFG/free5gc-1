@@ -56,6 +56,8 @@ jobs:
           sudo apt -y update
           sudo apt -y install git gcc cmake autoconf libtool pkg-config libmnl-dev libyaml-dev
           go get -u github.com/sirupsen/logrus
+          gcc --version
+          pwd
           
       - name: GTP5G module
         run: | 
@@ -65,9 +67,10 @@ jobs:
           make
           sudo make install    
           lsmod | grep gtp
+          pwd
               
       - name: Build NFs
-        run: sudo make all
+        run: pwd && sudo make all
           
       - name: TestRegistration
         run: |
