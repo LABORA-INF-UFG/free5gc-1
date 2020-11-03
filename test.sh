@@ -36,7 +36,6 @@ then
     exit 1
 fi
 
-mongo free5gc --eval "db.dropDatabase()"
 cp config/test/smfcfg.single.test.conf config/test/smfcfg.test.conf
 
 GOPATH=$HOME/go
