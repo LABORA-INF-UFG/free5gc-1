@@ -70,7 +70,9 @@ jobs:
           pwd
               
       - name: Build NFs
-        run: pwd && sudo make -f Makefile-CI all
+        run: |
+          echo "VERSION=$GITHUB_SHA_SHORT"
+          sudo make -f Makefile-CI all
           
       - name: TestRegistration
         run: |
