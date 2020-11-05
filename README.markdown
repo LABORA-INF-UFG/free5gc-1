@@ -29,9 +29,9 @@
 - [Recommended Environment](#recommended-environment)
 - [Installation](#installation)
   - [A. Pre-requisite](#a-pre-requisite)
-  - [B. Install Control Plane Entities](#b-install-control-plane-entities)
-  - [C. Install User Plane Function (UPF)](#c-install-user-plane-function-upf)
-- [Run](#run)
+  - [B. Install my5G-core Entities](#b-install-my5g-core-entities)
+
+  [Run](#run)
   - [A. Run the Core Network](#a-run-the-core-network)
   - [B. Run the N3IWF (Individually)](#b-run-the-n3iwf-individually)
   - [C. Run all-in-one with outside RAN](#c-run-all-in-one-with-outside-ran)
