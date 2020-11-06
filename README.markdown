@@ -2,10 +2,10 @@
 
 <div align="center">
 
-<a href="https://github.com/LABORA-INF-UFG/my5Gcore"><img width="40%" src="docs/media/img/my5g-logo.png" alt="free5GC"/></a>
+<a href="https://github.com/my5G/my5Gcore"><img width="40%" src="docs/media/img/my5g-logo.png" alt="my5g-core"/></a>
 
-![GitHub](https://img.shields.io/github/license/LABORA-INF-UFG/my5GCore?color=blue) ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/LABORA-INF-UFG/my5GCore?include_prereleases) ![GitHub All Releases](https://img.shields.io/github/downloads/LABORA-INF-UFG/my5GCore/total) ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/LABORA-INF-UFG/my5GCore) ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/LABORA-INF-UFG/my5GCore) 
-![GitHub repo size](https://img.shields.io/github/repo-size/LABORA-INF-UFG/my5GCore) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/labora-inf-ufg/my5gcore/My5Gcore%20Workflow) ![GitHub last commit](https://img.shields.io/github/last-commit/LABORA-INF-UFG/my5GCore) ![GitHub contributors](https://img.shields.io/github/contributors/LABORA-INF-UFG/my5GCore)
+![GitHub](https://img.shields.io/github/license/my5G/my5GCore?color=blue) ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/my5G/my5GCore?include_prereleases) ![GitHub All Releases](https://img.shields.io/github/downloads/my5G/my5GCore/total) ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/my5G/my5GCore) ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/my5G/my5GCore) 
+![GitHub repo size](https://img.shields.io/github/repo-size/my5G/my5GCore) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/my5G/my5gcore/My5Gcore%20Workflow) ![GitHub last commit](https://img.shields.io/github/last-commit/my5G/my5GCore) ![GitHub contributors](https://img.shields.io/github/contributors/my5G/my5GCore)
 
 ---
 
@@ -16,6 +16,8 @@
 **Currently, my5G-core is a fork of the free5GC, with some extensions to facilitate the deployment.**
 
 ---
+
+# Description
 
 # my5G-core Setup
 
@@ -152,7 +154,7 @@ for bug reports and feature requests. -->
 1. Clone my5GCore project
     ```bash
     cd ~
-    git clone https://github.com/LABORA-INF-UFG/my5Gcore.git
+    git clone https://github.com/my5G/my5Gcore.git
     cd ~/my5Gcore
     git checkout master
     git submodule sync
@@ -232,11 +234,11 @@ for bug reports and feature requests. -->
     sudo ./bin/n3iwf
     ``` -->
 
-### C. Run all-in-one with external RAN
+<!-- ### C. Run all-in-one with external RAN -->
 
 <!-- + Refer to this [sample config](./sample/ran_attach_config) if you wish to connect an external RAN with a complete free5GC core network. -->
 
-### D. Deploy within containers
+<!-- ### D. Deploy within containers -->
 
 <!-- + [free5gc-compose](https://github.com/free5gc/free5gc-compose/) provides a sample for the deployment of elements within containers. -->
 
@@ -247,11 +249,12 @@ Start a Wireshark capture on any core-connected interface, applying the filter `
 In order to run the tests, first do this:
 
 ```bash
-cd ~/free5gc
+cd ~/my5GCore
 chmod +x ./test.sh
  ```
 
-The tests are all run from within `~/free5gc`.
+The tests are all run from within `~/my5GCore
+`.
 
 a. TestRegistration
 
@@ -319,10 +322,3 @@ k. TestULCL
 ./test_ulcl.sh -om 3 TestRegistration
 ```
 
-## More information
-
-For more details, reference the free5gc [wiki](https://github.com/free5gc/free5gc/wiki).
-
-## Release Note
-
-Detailed changes for each release are documented in the [release notes](https://github.com/free5gc/free5gc/releases).
