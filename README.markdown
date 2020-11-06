@@ -9,26 +9,20 @@
 
 ---
 
-# my5G-core
+<!-- # my5G-core -->
 
 </div>
 
-**Currently, my5G-core is a fork of the free5GC, with some extensions to facilitate the deployment.**
+**Currently, my5G-core is a fork of the free5GC project, with some extensions to facilitate the deployment.**
 
 ---
-
-# Description
-
-# my5G-core Setup
-
-## Table of Contents
+# Table of Contents
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-
-- [Hardware Tested](#hardware-tested)
-- [Recommended Environment](#recommended-environment)
+- [Description](#description)
+    - [How to cite](#recommended-environment)
 - [Installation](#installation)
   - [A. Pre-requisite](#a-pre-requisite)
   - [B. Install my5G-core Entities](#b-install-my5g-core-entities)
@@ -41,16 +35,27 @@
 - [Test](#test)
 - [More information](#more-information)
 - [Release Note](#release-note)
+
+---
+# Description
+
+## How to cite
+``` @misc{} ```
+
+<!--   -->
+
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## Hardware Tested
-* There are no gNB and UE for standalone 5GC available in the market yet.
+<!-- ## Hardware Tested
+* There are no gNB and UE for standalone 5GC available in the market yet. -->
 <!-- 
 ## Questions
 For questions and support please use the [official forum](https://forum.free5gc.org). The issue list of this repo is exclusively
 for bug reports and feature requests. -->
 
-## Recommended Environment
+# Installation
+
+### Recommended Environment
 - Software
     - OS: Ubuntu 18.04
     - gcc 7.3.0
@@ -72,7 +77,7 @@ for bug reports and feature requests. -->
     - Hard drive: 160G
     - NIC card: 10Gbps ethernet card
 
-## Installation
+
 ### A. Pre-requisite
 
 0. Required kernel version `5.0.0-23-generic`. This request is from the module **gtp5g** (will be installed next) . Any more details please check [here](https://github.com/PrinzOwO/gtp5g)
@@ -242,7 +247,7 @@ for bug reports and feature requests. -->
 
 <!-- + [free5gc-compose](https://github.com/free5gc/free5gc-compose/) provides a sample for the deployment of elements within containers. -->
 
-## Test
+# Tests
 
 Start a Wireshark capture on any core-connected interface, applying the filter `'pfcp||icmp||gtp'`.
 
@@ -322,3 +327,4 @@ k. TestULCL
 ./test_ulcl.sh -om 3 TestRegistration
 ```
 
+# More information
