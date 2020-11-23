@@ -36,20 +36,19 @@
 - [More information](#more-information)
 - [Release Note](#release-note)
 
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ---
 # Description
 
 ## How to cite
 ``` @misc{} ```
-
-<!--   -->
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-<!-- ## Hardware Tested
-* There are no gNB and UE for standalone 5GC available in the market yet. -->
-<!-- 
+## Hardware Tested
+In the market today, there are neither hardware gNB nor hardware UEs that interface directly with a standalone 5GC, so no hardware testing has yet been performed against free5gc.
 ## Questions
+
+
+<!-- 
 For questions and support please use the [official forum](https://forum.free5gc.org). The issue list of this repo is exclusively
 for bug reports and feature requests. -->
 
@@ -76,7 +75,8 @@ for bug reports and feature requests. -->
     - RAM: 8GB
     - Hard drive: 160G
     - NIC card: 10Gbps ethernet card
-
+    
+This guide assumes that you will run all 5GC elements on a single machine.
 
 ### A. Pre-requisite
 
@@ -131,6 +131,10 @@ for bug reports and feature requests. -->
     ```
 4. Installing kernel module
 
+    >-Required minimum kernel version `5.0.0-23-generic`. This request is from the module **gtp5g**.  
+    >-Some linux kernel versions between `5.0.0-23-generic` and `5.4.0-54-generic` were tested without problems.   
+    >-For any more details please check [here](https://github.com/PrinzOwO/gtp5g). 
+
     Please check Linux kernel version if it is `5.0.0-23-generic` or higher
     ```bash
     uname -r
@@ -147,7 +151,8 @@ for bug reports and feature requests. -->
     make
     sudo make install
     ```
-5. Network Setting
+    
+5. Linux Host Network Setting
     ```bash
     sudo sysctl -w net.ipv4.ip_forward=1
     sudo iptables -t nat -A POSTROUTING -o <dn_interface> -j MASQUERADE
@@ -174,13 +179,25 @@ for bug reports and feature requests. -->
     cd ~/my5Gcore
     go mod download
     ```
+
 3. Compile network function services in `my5gCore`
+
+    * To do so individually (e.g., NRF only):
+
+    ```bash
+        cd ~/my5Gcore
+        make nrf   
+    ```
+
+    * To build all network functions:
+
     ```bash
     cd ~/my5Gcore
-    make all 
+    make all   
     ```
-    Customize the NFs as desired. The NFs configuration file is:
-
+4. Customize the NFs as desired.
+    > The NF configuration file is `~/my5Gcore/config/<someNF>cfg.conf`, for example: `~/my5Gcore/config/amfcfg.conf`. 
+    > Samples files are located on: `~/my5Gcore/sample/` 
     + For UPF  
     ```~/my5Gcore/src/upf/build/config/upfcfg.yaml```
     + For other NFs   
@@ -193,11 +210,11 @@ for bug reports and feature requests. -->
 1. Run network function services individually.  
 ``` ./bin/<some-NF> [-free5gccfg <core-configuration-file>] [-udmcfg <nf-configuration-file>] & ```
 
-    For example, to run the AMF:
+    For example, to run the NRF:
 
     ```bash
     cd ~/my5Gcore
-    ./bin/amf
+    ./bin/NRF
     ```
     to run with customized settings:
     ```bash
@@ -205,6 +222,7 @@ for bug reports and feature requests. -->
     ./bin/amf -free5gccfg sample/my5g_basic_config/free5GC.conf -amfcfg sample/my5g_basic_config/amfcfg.conf &
     ```
     **Note: The N3IWF needs specific configuration, which is detailed in section B.** 
+    
 2. Run whole core network
     ```bash
     # bash
@@ -213,7 +231,7 @@ for bug reports and feature requests. -->
     ```
 ### B. Run the N3IWF (Individually)
 
-<!-- + To run an instance of the N3IWF, make sure your system is equipped with three network interfaces: the first connects to the AMF, the second connects to the UPF, and the third is for IKE daemon.
++ To run an instance of the N3IWF, make sure your system is equipped with three network interfaces: the first connects to the AMF, the second connects to the UPF, and the third is for IKE daemon.
 
     Configure each interface with a suitable IP address.
 
@@ -239,15 +257,15 @@ for bug reports and feature requests. -->
     sudo ./bin/n3iwf
     ``` -->
 
-<!-- ### C. Run all-in-one with external RAN -->
+### C. Run all-in-one with external RAN -->
 
-<!-- + Refer to this [sample config](./sample/ran_attach_config) if you wish to connect an external RAN with a complete free5GC core network. -->
++ Refer to this [sample config](./sample/ran_attach_config) if you wish to connect an external RAN with a complete free5GC core network.
 
-<!-- ### D. Deploy within containers -->
+### D. Deploy within containers
 
-<!-- + [free5gc-compose](https://github.com/free5gc/free5gc-compose/) provides a sample for the deployment of elements within containers. -->
++ [free5gc-compose](https://github.com/free5gc/free5gc-compose/) provides a sample for the deployment of elements within containers.
 
-# Tests
+## Tests
 
 Start a Wireshark capture on any core-connected interface, applying the filter `'pfcp||icmp||gtp'`.
 
@@ -256,7 +274,7 @@ In order to run the tests, first do this:
 ```bash
 cd ~/my5GCore
 chmod +x ./test.sh
- ```
+```
 
 The tests are all run from within `~/my5GCore
 `.
@@ -327,4 +345,11 @@ k. TestULCL
 ./test_ulcl.sh -om 3 TestRegistration
 ```
 
-# More information
+## More information
+
+For more details, reference the my5Gcore [wiki](https://github.com/my5G/my5g-core).
+
+## Release Note
+
+Detailed changes for each release are documented in the [release notes](https://github.com/my5G/my5G-core).
+Currently, the my5Gcore is a fork of the free5GC, with some contributions to simply the installation.
