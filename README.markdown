@@ -218,8 +218,8 @@ This guide assumes that you will run all 5GC elements on a single machine.
     ```
     to run with customized settings:
     ```bash
-    # AMF
-    ./bin/amf -free5gccfg sample/my5g_basic_config/free5GC.conf -amfcfg sample/my5g_basic_config/amfcfg.conf &
+    # NRF
+    ./bin/nrf -free5gccfg sample/my5g_basic_config/free5GC.conf -nrfcfg sample/my5g_basic_config/nrfcfg.conf &
     ```
     **Note: The N3IWF needs specific configuration, which is detailed in section B.** 
     
@@ -231,18 +231,18 @@ This guide assumes that you will run all 5GC elements on a single machine.
     ```
 ### B. Run the N3IWF (Individually)
 
-+ To run an instance of the N3IWF, make sure your system is equipped with three network interfaces: the first connects to the AMF, the second connects to the UPF, and the third is for IKE daemon.
+To run an instance of the N3IWF, make sure your system is equipped with three network interfaces: the first connects to the AMF, the second connects to the UPF, and the third is for IKE daemon.
 
-    Configure each interface with a suitable IP address.
+1. Configure each interface with a suitable IP address.
 
-    Create an interface for IPSec traffic:
+2. Create an interface for IPSec traffic:
 
     ```bash
     # replace <...> to suitable value
     sudo ip link add ipsec0 type vti local <IKEBindAddress> remote 0.0.0.0 key <IPSecInterfaceMark>
     ```
 
-    Assign an address to this interface, then bring it up:
+3. Assign an address to this interface, then bring it up:
 
     ```bash
     # replace <...> to suitable value
@@ -250,12 +250,12 @@ This guide assumes that you will run all 5GC elements on a single machine.
     sudo ip link set dev ipsec0 up
     ```
 
-    Run the N3IWF (root privilege is required):
+4. Run the N3IWF (root privilege is required):
 
     ```bash
     cd ~/free5gc/
     sudo ./bin/n3iwf
-    ``` -->
+    ```
 
 ### C. Run all-in-one with external RAN
 
@@ -347,7 +347,7 @@ k. TestULCL
 
 ## More information
 
-For more details, reference the my5Gcore [wiki](https://github.com/my5G/my5g-core).
+For more details about **my5G initiative**, reference the my5Gcore [page](https://my5g.github.io/).
 
 ## Release Note
 
