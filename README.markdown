@@ -22,17 +22,19 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [Description](#description)
-    - [How to cite](#recommended-environment)
+    - [How to cite](#how-to-cite)
+    - [Hardware tested](#hardware-tested)
+    - [Questions](#questions)
 - [Installation](#installation)
-  - [A. Pre-requisite](#a-pre-requisite)
-  - [B. Install my5G-core Entities](#b-install-my5g-core-entities)
-
-  [Run](#run)
+    - [Recommended Environment](#recommended-environment)
+    - [A. Pre-requisite](#a-pre-requisite)
+    - [B. Install my5G-core Entities](#b-install-my5g-core-entities)
+- [Run](#run)
   - [A. Run the Core Network](#a-run-the-core-network)
   - [B. Run the N3IWF (Individually)](#b-run-the-n3iwf-individually)
-  - [C. Run all-in-one with outside RAN](#c-run-all-in-one-with-outside-ran)
+  - [C. Run all-in-one with external RAN](#c-run-all-in-one-with-external-ran) 
   - [D. Deploy within containers](#d-deploy-within-containers)
-- [Test](#test)
+- [Tests](#tests)
 - [More information](#more-information)
 - [Release Note](#release-note)
 
@@ -42,17 +44,14 @@
 # Description
 
 ## How to cite
+It is a pleasure to share our knowledge and you are free to use! Please, cite our work as we can continue contributing. Thank you!
 ``` @misc{} ```
-## Hardware Tested
+## Hardware tested
 In the market today, there are neither hardware gNB nor hardware UEs that interface directly with a standalone 5GC, so no hardware testing has yet been performed against free5gc.
 ## Questions
-
-
-<!-- 
-For questions and support please use the [official forum](https://forum.free5gc.org). The issue list of this repo is exclusively
-for bug reports and feature requests. -->
-
-# Installation
+ 
+For questions and support please send a e-mail message to [my5G team](mailto:my5G.initiative@gmail.com). 
+## Installation
 
 ### Recommended Environment
 - Software
@@ -75,7 +74,7 @@ for bug reports and feature requests. -->
     - RAM: 8GB
     - Hard drive: 160G
     - NIC card: 10Gbps ethernet card
-    
+
 This guide assumes that you will run all 5GC elements on a single machine.
 
 ### A. Pre-requisite
@@ -257,13 +256,13 @@ This guide assumes that you will run all 5GC elements on a single machine.
     sudo ./bin/n3iwf
     ``` -->
 
-### C. Run all-in-one with external RAN -->
+### C. Run all-in-one with external RAN
 
 + Refer to this [sample config](./sample/ran_attach_config) if you wish to connect an external RAN with a complete free5GC core network.
 
 ### D. Deploy within containers
 
-+ [free5gc-compose](https://github.com/free5gc/free5gc-compose/) provides a sample for the deployment of elements within containers.
++ [my5Gcore-compose](https://github.com/my5G/my5Gcore-compose) provides a sample for the deployment of elements within containers.
 
 ## Tests
 
